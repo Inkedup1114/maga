@@ -8,8 +8,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-roboto)', 'sans-serif'],
-        foldit: ['var(--font-foldit)', 'sans-serif'],
+        sans: ['var(--font-sixtyfour)', 'Sixtyfour Convergence', 'sans-serif'],
+        sixtyfour: ['var(--font-sixtyfour)', 'Sixtyfour Convergence', 'sans-serif'],
       },
     },
   },

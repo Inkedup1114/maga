@@ -1,16 +1,15 @@
+
 import '../styles/globals.css'
-import { Foldit, Space_Grotesk } from 'next/font/google'
+import localFont from 'next/font/local'
 
-const foldit = Foldit({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-foldit',
-})
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-space-grotesk',
+const sixtyfour = localFont({
+  src: [
+    {
+      path: '../public/fonts/Sixtyfour-Variable.ttf',
+      style: 'normal',
+    }
+  ],
+  variable: '--font-sixtyfour',
 })
 
 export const metadata = {
@@ -24,8 +23,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={`${foldit.variable} ${spaceGrotesk.variable} font-sans`}>{children}</body>
+    <html lang="en" className={sixtyfour.variable}>
+      <body>{children}</body>
     </html>
   )
 }

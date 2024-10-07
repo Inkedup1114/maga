@@ -1,3 +1,12 @@
+@font-face {
+  font-family: 'Sixtyfour Convergence';
+  src: url('/fonts/SixtyfourConvergence-Regular-VariableFont_BLED,SCAN,XELA,YELA.ttf') format('truetype-variations'),
+       url('/fonts/static/SixtyfourConvergence-Regular.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -16,18 +25,31 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+  font-family: var(--font-sixtyfour), 'Sixtyfour Convergence', sans-serif;
 }
 
-/* Foldit Variable Font Weight Utilities */
-.font-weight-100 { font-variation-settings: 'wght' 100; }
-.font-weight-200 { font-variation-settings: 'wght' 200; }
-.font-weight-300 { font-variation-settings: 'wght' 300; }
-.font-weight-400 { font-variation-settings: 'wght' 400; }
-.font-weight-500 { font-variation-settings: 'wght' 500; }
-.font-weight-600 { font-variation-settings: 'wght' 600; }
-.font-weight-700 { font-variation-settings: 'wght' 700; }
-.font-weight-800 { font-variation-settings: 'wght' 800; }
-.font-weight-900 { font-variation-settings: 'wght' 900; }
+/* Sixtyfour Variable Font Weight Utilities */
+.font-weight-100 { font-variation-settings: 'BLED' 100, 'SCAN' 100, 'XELA' 100, 'YELA' 100; }
+.font-weight-200 { font-variation-settings: 'BLED' 200, 'SCAN' 200, 'XELA' 200, 'YELA' 200; }
+.font-weight-300 { font-variation-settings: 'BLED' 300, 'SCAN' 300, 'XELA' 300, 'YELA' 300; }
+.font-weight-400 { font-variation-settings: 'BLED' 400, 'SCAN' 400, 'XELA' 400, 'YELA' 400; }
+.font-weight-500 { font-variation-settings: 'BLED' 500, 'SCAN' 500, 'XELA' 500, 'YELA' 500; }
+.font-weight-600 { font-variation-settings: 'BLED' 600, 'SCAN' 600, 'XELA' 600, 'YELA' 600; }
+.font-weight-700 { font-variation-settings: 'BLED' 700, 'SCAN' 700, 'XELA' 700, 'YELA' 700; }
+.font-weight-800 { font-variation-settings: 'BLED' 800, 'SCAN' 800, 'XELA' 800, 'YELA' 800; }
+.font-weight-900 { font-variation-settings: 'BLED' 900, 'SCAN' 900, 'XELA' 900, 'YELA' 900; }
+
+/* Custom Utilities */
+.text-shadow {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.gradient-text {
+  background: linear-gradient(45deg, #ff0000, #ffffff, #0000ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
 
 /* Responsive font sizes */
 @media (max-width: 640px) {
@@ -46,4 +68,42 @@ body {
   html {
     font-size: 18px;
   }
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

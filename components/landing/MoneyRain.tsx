@@ -28,16 +28,16 @@ const MoneyRain = () => {
     velocityY: 0,
     rotation: Math.random() * 360,
     swayFactor: Math.random() * 2 - 1,
-    scale: 1,
+    scale: 0.5 + Math.random() * 0.5, // Vary the scale for more diversity
   }), [])
 
   useEffect(() => {
-    const billCount = Math.min(50, Math.floor((window.innerWidth * window.innerHeight) / 20000))
+    const billCount = Math.min(100, Math.floor((window.innerWidth * window.innerHeight) / 10000)) // Increased bill count
     setBills(Array.from({ length: billCount }, createBill))
 
     const interval = setInterval(() => {
       setBills((prevBills) => [...prevBills.slice(-billCount + 1), createBill()])
-    }, 1000)
+    }, 500) // Reduced interval for more frequent bill creation
 
     const handleMouseMove = (e: MouseEvent) => {
       if (containerRef.current) {
@@ -76,16 +76,16 @@ const MoneyRain = () => {
           bill.velocityX -= Math.cos(angle) * force * 2
           bill.velocityY -= Math.sin(angle) * force * 2
           bill.rotation += (Math.random() - 0.5) * 20
-          bill.scale = 1.2
+          bill.scale = Math.min(1.5, bill.scale * 1.1) // Increased max scale
         } else {
-          bill.scale = Math.max(1, bill.scale - 0.05)
+          bill.scale = Math.max(0.5, bill.scale - 0.05)
         }
         
         bill.velocityX *= 0.95
         bill.velocityY *= 0.95
         
-        bill.velocityX += Math.sin(Date.now() / 1000 + bill.swayFactor) * 0.0005
-        bill.velocityY += Math.cos(Date.now() / 1000 + bill.swayFactor) * 0.0005
+        bill.velocityX += Math.sin(Date.now() / 1000 + bill.swayFactor) * 0.001 // Increased sway
+        bill.velocityY += Math.cos(Date.now() / 1000 + bill.swayFactor) * 0.001 // Increased sway
         
         let newLeft = bill.left + (bill.velocityX / width) * 100
         let newTop = bill.top + (bill.velocityY / height) * 100
@@ -138,7 +138,7 @@ const MoneyRain = () => {
             alt=""
             width={100}
             height={50}
-            className="w-auto h-auto max-w-[75px] opacity-75"
+            className="w-auto h-auto max-w-[100px] opacity-75"
           />
         </div>
       ))}
